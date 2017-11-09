@@ -8,13 +8,13 @@ jobs:
     steps:
       - checkout
       - run:
-          name: update-npm
-          command: 'sudo npm install -g npm@latest'
+          name: npm outdated
+          command: npm outdated
       - restore_cache:
           key: dependency-cache-{{ checksum "package.json" }}
       - run:
           name: install-npm-wee
-          command: npm install
+          command: npm install npm-check
       - save_cache:
           key: dependency-cache-{{ checksum "package.json" }}
           paths:
